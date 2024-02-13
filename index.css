@@ -1,0 +1,177 @@
+/* - Weights: 400i, 700, 800i */
+
+:root
+{
+    /* Primary colorls */
+
+    --Purple: hsl(259, 100%, 65%);
+    --LightRed:  hsl(0, 100%, 67%);
+
+    /* Neutral colors */
+
+    --White: hsl(0, 0%, 100%);
+    --OffWhite:  hsl(0, 0%, 94%);
+    --LightGrey: hsl(0, 0%, 86%);
+    --SmokeyGrey: hsl(0, 1%, 44%);
+    --OffBlack:  hsl(0, 0%, 8%)
+}
+
+@font-face {
+    font-family: "PoppinsBold";
+    src: url(assets/fonts/Poppins-Bold.ttf);
+}
+@font-face {
+    font-family: "PoppinsBoldItalic";
+    src: url(assets/fonts/Poppins-BoldItalic.ttf);
+}
+@font-face {
+    font-family: "PoppinsExtraBold";
+    src: url(assets/fonts/Poppins-ExtraBold.ttf);
+}
+@font-face {
+    font-family: "PoppinsExtraBoldItalic";
+    src: url(assets/fonts/Poppins-ExtraBoldItalic.ttf);
+}
+@font-face {
+    font-family: "PoppinsItalic";
+    src: url(assets/fonts/Poppins-Italic.ttf);
+}
+@font-face {
+    font-family: "PoppinsRegular";
+    src: url(assets/fonts/Poppins-Regular.ttf);
+}
+
+body
+{
+   text-align: center;
+   justify-content: center;
+   align-items: center;
+   background-color: var(--LightGrey)
+}
+
+.container
+{
+    background-color: var(--White);
+    margin: 0 auto;
+    display: flex;
+    flex-direction:column ;
+    width: 450px;
+    border-radius: 20px 20px  50px 20px;
+    padding: 30px;
+    margin-top: 15%;
+
+}
+
+
+/* Design Form */
+form
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputList
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.formContent
+{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    font-size: 16px;
+    color: var(--SmokeyGrey);
+    
+}
+label
+{
+    text-align: left;
+    font-family:"PoppinsRegular" ;
+    
+}
+
+.error
+{
+    text-align: left;
+    font-family: "PoppinsItalic";
+    color: var(--LightRed);
+    font-size: 8px;
+   
+}
+
+.notDisplay
+{
+    display: none;
+}
+
+input
+{
+    border: solid 1px var(--LightGrey);
+    border-radius: 10px;
+    font-size: 16px;
+   font-family: "PoppinsBold";
+    padding: 10px;
+    width: 5rem;
+    cursor: pointer;
+}
+
+input:focus
+{
+    border: var(--OffBlack);
+}
+
+/*Submit section of form */
+
+
+.submitSection
+{
+    display: flex;
+    flex-direction: row;
+}
+HR
+{
+  width: 100%;
+  height: 0;
+  margin-top: 20px;
+}
+.submitSection button
+{
+    background-color: var(--Purple);
+    border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   cursor: pointer;
+   border: none;
+   transition: background-color 0.3 ease-in-out;
+   
+}
+
+.submitSection button:hover
+{
+    background-color: var(--OffBlack);
+}
+
+img
+{
+    width: 100%;
+   height: 100%;
+}
+
+/* Result Section */
+
+.resultSection
+{
+    display: flex;
+    flex-direction: column;
+    font-family: "PoppinsExtraBold";
+    font-size: 45px;
+    text-align: left;
+}
+
+span
+{
+    color: var(--Purple);
+    font-family: "PoppinsExtraBoldItalic";
+}
