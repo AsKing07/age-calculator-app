@@ -2,7 +2,8 @@
 // Fonction pour calculer l'âge exact à partir de la date de naissance
 //dob = date of birth
 function calcultAge(dob) {
-    const dobObj = new Date(dob);
+    let dobObj = new Date(dob);
+    
     const now = new Date();
 
 
@@ -27,9 +28,9 @@ function calcultAge(dob) {
 
 
     return {
-        year: age,
-        months: month,
-        days: days
+        year: parseInt(age),
+        months: parseInt(month),
+        days: parseInt(days)
     };
 }
 
@@ -82,9 +83,9 @@ function showAge(age) {
     const showMonth = document.getElementById("monthResult")
     const showDay = document.getElementById("dayResult")
 
-    showYear.textContent = (age.year).toString();
-    showMonth.textContent = parseInt(age.months);
-    showDay.textContent = parseInt(age.days);
+    showYear.textContent = age.year;
+    showMonth.textContent = age.months;
+    showDay.textContent = age.days;
 }
 
 // When the form is submitted
