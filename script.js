@@ -76,15 +76,25 @@ function isLeapYear(year) {
 
 //Function to show age
 function showAge(age) {
-    console.log("Âge exact : " + age.year + " ans, " + age.months + " mois et " + age.days + " jours");
     // Vous pouvez ici ajouter du code pour animer les numéros d'âge si vous le souhaitez
-    const showYear = document.getElementById("yearResult")
-    const showMonth = document.getElementById("monthResult")
-    const showDay = document.getElementById("dayResult")
+    const showYear = document.getElementById("yearResult");
+    const showMonth = document.getElementById("monthResult");
+    const showDay = document.getElementById("dayResult");
 
-    showYear.textContent = age.year;
-    showMonth.textContent = age.months;
-    showDay.textContent = age.days;
+    animateNumber(showYear, age.year);
+    animateNumber(showMonth, age.months);
+    animateNumber(showDay, age.days);
+}
+
+function animateNumber(element, target) {
+    let current = 0;
+    const interval = setInterval(() => {
+        current++;
+        element.textContent = current < 10 ? `0${current}` : current;
+        if (current === target) {
+            clearInterval(interval);
+        }
+    }, 100); // Vitesse de l'animation en millisecondes
 }
 
 // When the form is submitted
