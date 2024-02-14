@@ -52,11 +52,11 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  width: 35%;
+  width: 40%;
   border-radius: 20px;
   border-bottom-right-radius: 150px;
   padding: 30px;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 /* Design Form */
@@ -100,7 +100,7 @@ input {
   font-size: 16px;
   font-family: "PoppinsBold";
   padding: 10px;
-  width: 5rem;
+  width: 6rem;
   cursor: pointer;
 }
 
@@ -121,13 +121,13 @@ input {
 HR {
   width: 100%;
   height: 0;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 .submitSection button {
   background-color: var(--Purple);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 60px;
   cursor: pointer;
   border: none;
   transition: background-color 0.3 ease-in-out;
@@ -148,7 +148,7 @@ img {
   display: flex;
   flex-direction: column;
   font-family: "PoppinsExtraBold";
-  font-size: 45px;
+  font-size: 70px;
   text-align: left;
   margin-top: 15px;
 }
@@ -209,4 +209,18 @@ span {
   .resultSection {
     font-size: 40px;
   }
+
+
+  HR {
+
+    margin-top: 20px;
+  }
+  .submitSection button {
+   
+    width: 40px;
+    height: 40px;
+   
+  }
+  
 }
+
