@@ -13,6 +13,7 @@ function calcultAge(dob) {
         month < 0 ? month+=12 : month+=0
     }
 
+
     if (days < 0) {
         const lastDayPrecedentMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
         console.log(lastDayPrecedentMonth)
@@ -77,7 +78,7 @@ function showAge(age) {
     const showMonth = document.getElementById("monthResult")
     const showDay = document.getElementById("dayResult")
 
-    showYear.textContent = parseInt(age.year);
+    showYear.textContent = (age.year).toString();
     showMonth.textContent = parseInt(age.months);
     showDay.textContent = parseInt(age.days);
 }
