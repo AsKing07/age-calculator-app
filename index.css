@@ -1,263 +1,212 @@
 /* - Weights: 400i, 700, 800i */
 
-:root
-{
-    /* Primary colorls */
+:root {
+  /* Primary colorls */
 
-    --Purple: hsl(259, 100%, 65%);
-    --LightRed:  hsl(0, 100%, 67%);
+  --Purple: hsl(259, 100%, 65%);
+  --LightRed: hsl(0, 100%, 67%);
 
-    /* Neutral colors */
+  /* Neutral colors */
 
-    --White: hsl(0, 0%, 100%);
-    --OffWhite:  hsl(0, 0%, 94%);
-    --LightGrey: hsl(0, 0%, 86%);
-    --SmokeyGrey: hsl(0, 1%, 44%);
-    --OffBlack:  hsl(0, 0%, 8%)
+  --White: hsl(0, 0%, 100%);
+  --OffWhite: hsl(0, 0%, 94%);
+  --LightGrey: hsl(0, 0%, 86%);
+  --SmokeyGrey: hsl(0, 1%, 44%);
+  --OffBlack: hsl(0, 0%, 8%);
 }
 
 @font-face {
-    font-family: "PoppinsBold";
-    src: url(assets/fonts/Poppins-Bold.ttf);
+  font-family: "PoppinsBold";
+  src: url(assets/fonts/Poppins-Bold.ttf);
 }
 @font-face {
-    font-family: "PoppinsBoldItalic";
-    src: url(assets/fonts/Poppins-BoldItalic.ttf);
+  font-family: "PoppinsBoldItalic";
+  src: url(assets/fonts/Poppins-BoldItalic.ttf);
 }
 @font-face {
-    font-family: "PoppinsExtraBold";
-    src: url(assets/fonts/Poppins-ExtraBold.ttf);
+  font-family: "PoppinsExtraBold";
+  src: url(assets/fonts/Poppins-ExtraBold.ttf);
 }
 @font-face {
-    font-family: "PoppinsExtraBoldItalic";
-    src: url(assets/fonts/Poppins-ExtraBoldItalic.ttf);
+  font-family: "PoppinsExtraBoldItalic";
+  src: url(assets/fonts/Poppins-ExtraBoldItalic.ttf);
 }
 @font-face {
-    font-family: "PoppinsItalic";
-    src: url(assets/fonts/Poppins-Italic.ttf);
+  font-family: "PoppinsItalic";
+  src: url(assets/fonts/Poppins-Italic.ttf);
 }
 @font-face {
-    font-family: "PoppinsRegular";
-    src: url(assets/fonts/Poppins-Regular.ttf);
+  font-family: "PoppinsRegular";
+  src: url(assets/fonts/Poppins-Regular.ttf);
 }
 
-body
-{
-   text-align: center;
-   justify-content: center;
-   align-items: center;
-   background-color: var(--LightGrey)
+body {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--LightGrey);
 }
 
-.container
-{
-    background-color: var(--White);
-    margin: 0 auto;
-    display: flex;
-    flex-direction:column ;
-    width: 450px;
-    border-radius: 20px;
-    border-bottom-right-radius: 150px;  
-    padding: 30px;
-    margin-top: 15%;
-
+.container {
+  background-color: var(--White);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  border-radius: 20px;
+  border-bottom-right-radius: 150px;
+  padding: 30px;
+  margin-top: 10%;
 }
-
 
 /* Design Form */
-form
-{
-    display: flex;
-    flex-direction: column;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.inputList
-{
-    display: flex;
-    flex-direction: row;
+.inputList {
+  display: flex;
+  flex-direction: row;
 }
 
-.formContent
-{
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
-    font-size: 16px;
-    color: var(--SmokeyGrey);
-    
+.formContent {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  font-size: 16px;
+  color: var(--SmokeyGrey);
 }
-label
-{
-    text-align: left;
-    font-family:"PoppinsRegular" ;
-    
+label {
+  text-align: left;
+  font-family: "Poppins";
+  text-transform: uppercase;
 }
 
-.error
-{
-    text-align: left;
-    font-family: "PoppinsItalic";
-    color: var(--LightRed);
-    font-size: 8px;
-   
+.error {
+  text-align: left;
+  font-family: "PoppinsItalic";
+  color: var(--LightRed);
+  font-size: 8px;
 }
 
-.notDisplay
-{
-    display: none;
+.notDisplay {
+  display: none;
 }
 
-input
-{
-    border: solid 1px var(--LightGrey);
-    border-radius: 10px;
-    font-size: 16px;
-   font-family: "PoppinsBold";
-    padding: 10px;
-    width: 5rem;
-    cursor: pointer;
+input {
+  border: solid 1px var(--LightGrey);
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: "PoppinsBold";
+  padding: 10px;
+  width: 5rem;
+  cursor: pointer;
 }
 
-.inputError
-{
-    border: solid 1px var(--LightRed);
+.inputError {
+  border: solid 1px var(--LightRed);
 }
 
-.labelError
-
-input:focus
-{
-    border: var(--OffBlack);
+.labelError input:focus {
+  border: var(--OffBlack);
 }
 
 /*Submit section of form */
 
-
-.submitSection
-{
-    display: flex;
-    flex-direction: row;
+.submitSection {
+  display: flex;
+  flex-direction: row;
 }
-HR
-{
+HR {
   width: 100%;
   height: 0;
   margin-top: 20px;
 }
-.submitSection button
-{
-    background-color: var(--Purple);
-    border-radius: 50%;
-   width: 40px;
-   height: 40px;
-   cursor: pointer;
-   border: none;
-   transition: background-color 0.3 ease-in-out;
-   
+.submitSection button {
+  background-color: var(--Purple);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3 ease-in-out;
 }
 
-.submitSection button:hover
-{
-    background-color: var(--OffBlack);
+.submitSection button:hover {
+  background-color: var(--OffBlack);
 }
 
-img
-{
-    width: 100%;
-   height: 100%;
+img {
+  width: 100%;
+  height: 100%;
 }
 
 /* Result Section */
 
-.resultSection
-{
-    display: flex;
-    flex-direction: column;
-    font-family: "PoppinsExtraBold";
-    font-size: 45px;
-    text-align: left;
-    margin-top: 15px;
+.resultSection {
+  display: flex;
+  flex-direction: column;
+  font-family: "PoppinsExtraBold";
+  font-size: 45px;
+  text-align: left;
+  margin-top: 15px;
 }
 
-span
-{
-    color: var(--Purple);
-    font-family: "PoppinsExtraBoldItalic";
+span {
+  color: var(--Purple);
+  font-family: "PoppinsExtraBoldItalic";
 }
-
 
 /* Mobile view */
-@media only screen and (max-width: 768px) 
-{
-    /* body
+@media only screen and (max-width: 768px) {
+  /* body
     {
         width: 100%;
         height: 100%;
     } */
 
-    .container
-{
+  .container {
     background-color: var(--White);
 
-    
     width: 250px;
-    
+
     padding: 10px;
     margin-top: 30%;
+  }
 
-}
-
-
-.formContent
-{
-   
+  .formContent {
     margin-right: 5px;
     font-size: 16px;
-    
-}
+  }
 
-input
-{
-   
+  input {
     font-size: 15px;
     padding: 5px;
     width: 4rem;
-  
-}
+  }
 
-label
-{
+  label {
     text-align: left;
-    font-family:"PoppinsRegular" ;
+    font-family: "PoppinsRegular";
     font-size: 12px;
-}
+  }
 
-.error
-{  
+  .error {
     color: var(--LightRed);
     font-size: 7px;
-}
+  }
 
-
-.submitSection
-{
+  .submitSection {
     margin-top: 20px;
-}
+  }
 
-.submitSection button
-{
-   position: fixed; 
-   right: 45%;
-   
-}
+  .submitSection button {
+    position: fixed;
+    right: 45%;
+  }
 
-
-
-.resultSection
-{
-    font-size: 40px;   
-}
-
-
-    
+  .resultSection {
+    font-size: 40px;
+  }
 }

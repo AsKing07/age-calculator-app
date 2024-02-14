@@ -1,198 +1,185 @@
+// When the form is submitted
+document.getElementById("form").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-// Fonction pour calculer l'âge exact à partir de la date de naissance
-//dob = date of birth
-function calcultAge(dob) {
-    let dobObj = new Date(dob);
-    
-    const now = new Date();
+  const showErrorForm = document.getElementById("errorForm");
+  showErrorForm.innerHTML = "";
 
+  const day = parseInt(document.getElementById("dob_day").value);
+  const month = parseInt(document.getElementById("dob_month").value);
+  const year = parseInt(document.getElementById("dob_year").value);
 
+  const dateComponents = [
+    {
+      inputId: "dob_day",
+      errorId: "errorDay",
+      min: 1,
+      max: 31,
+      errorMessage: "Must be between 1 and 31 days",
+    },
+    {
+      inputId: "dob_month",
+      errorId: "errorMonth",
+      min: 1,
+      max: 12,
+      errorMessage: "Must be between 1 and 12 months",
+    },
+    {
+      inputId: "dob_year",
+      errorId: "errorYear",
+      min: undefined,
+      max: new Date().getFullYear(),
+      errorMessage: "Should not be in the future",
+    },
+  ];
 
+  let isError;
+   dateComponents.forEach((component) => {
+    const inputElement = document.getElementById(component.inputId);
+    const errorElement = document.getElementById(component.errorId);
 
-    let age = now.getFullYear() - dobObj.getFullYear();
-    let month = now.getMonth() - dobObj.getMonth();
-    let days = now.getDate() - dobObj.getDate();
-
-    if (month < 0 || (month === 0 && days < 0)) {
-        age--;
-        month < 0 ? month+=12 : month+=0
+    if (isNaN(parseInt(inputElement.value))) {
+      showError("This field is required", errorElement, inputElement);
+      isError = true;
+      return
+    } else {
+      inputElement.classList.remove("inputError");
+      errorElement.classList.add("notDisplay");
     }
 
-
-    if (days < 0) {
-        const lastDayPrecedentMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
-        days += lastDayPrecedentMonth;
-        month--;
+    if (
+      (component.min && inputElement.value < component.min) ||
+      inputElement.value > component.max
+    ) {
+      showError(component.errorMessage, errorElement, inputElement);
+      isError = true;
+      return;
     }
+    isError = false;
+  });
+  console.log(isError)
+
+  if(isError)
+  {
+    return;
+  }
+
+  if (!validateDate(day, month, year)) {
+    document.getElementById("dob_day").classList.add("inputError");
+    document.getElementById("dob_month").classList.add("inputError");
+    document.getElementById("dob_year").classList.add("inputError");
+
+    showErrorForm.innerHTML = "Must be a valid date";
+    showErrorForm.classList.remove("notDisplay");
+    return;
+  }
+  else
+  {
+    const age = calcultAge(month + "/" + day + "/" + year);
+    showAge(age);
+  }
 
 
-    return {
-        year: parseInt(age),
-        months: parseInt(month),
-        days: parseInt(days)
-    };
+});
+
+function showError(message, errorElement, inputElement) {
+  errorElement.innerHTML = message;
+  errorElement.classList.remove("notDisplay");
+  inputElement.classList.add("inputError");
 }
 
 // Function for verify a date
+
 function validateDate(day, month, year) {
-    const monthsWith31Days = [1, 3, 5, 7, 8, 10, 12];
-    const monthsWith30Days = [4, 6, 9, 11];
+  const monthsWith31Days = [1, 3, 5, 7, 8, 10, 12];
+  const monthsWith30Days = [4, 6, 9, 11];
 
-    // Vérify if day between 1 and 31
-    if (day < 1 || day > 31) {
-        return false;
-    }
+  if (
+    day < 1 ||
+    day > 31 ||
+    month < 1 ||
+    month > 12 ||
+    year > new Date().getFullYear()
+  ) {
+    return false;
+  }
 
-    // Vérify if month between 1 and 12
-    if (month < 1 || month > 12) {
-        return false;
-    }
+  const givenDate = new Date(year, month - 1, day);
+  const now = new Date();
+  if (givenDate > now) {
+    return false;
+  }
 
-    // Vérify if year is not in the future
-    const givenDate = new Date(year, month - 1, day);
-    const now = new Date();
-    if (givenDate > now) {
-        return false;
-    }
+  if (
+    (month === 2 && (day > 29 || (day === 29 && !isLeapYear(year)))) ||
+    (monthsWith31Days.includes(month) && day > 31) ||
+    (monthsWith30Days.includes(month) && day > 30)
+  ) {
+    return false;
+  }
 
-    // Check if the date is valid based on the number of days in the month
-    if ((month === 2 && (day > 29
-         || (month === 29 && !isLeapYear(year))
-         )) ||
-        (monthsWith31Days.includes(month) && day > 31) 
-        ||
-        (monthsWith30Days.includes(month) && day > 30)) 
-        {
-        return false;
-    }
-
-    return true;
+  return true;
 }
 
 // function for verify if it's a leap  year or not
 function isLeapYear(year) {
-    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+}
+
+//Function for calculate age
+//dob = date of birth
+function calcultAge(dob) {
+  const dobObj = new Date(dob);
+  const now = new Date();
+
+  let age = now.getFullYear() - dobObj.getFullYear();
+  let months = now.getMonth() - dobObj.getMonth();
+  let days = now.getDate() - dobObj.getDate();
+
+  if (months < 0 || (months === 0 && days < 0)) {
+    age--;
+    months = now.getMonth() + 12 - dobObj.getMonth();
+  }
+
+  if (days < 0) {
+    const lastDayPrecedentMonth = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      0
+    ).getDate();
+    days += lastDayPrecedentMonth;
+    months--;
+  }
+
+  return {
+    year: Math.floor(age),
+    months: Math.floor(months),
+    days: Math.floor(days),
+  };
 }
 
 //Function to show age
 function showAge(age) {
-    // Vous pouvez ici ajouter du code pour animer les numéros d'âge si vous le souhaitez
-    const showYear = document.getElementById("yearResult");
-    const showMonth = document.getElementById("monthResult");
-    const showDay = document.getElementById("dayResult");
+  const showYear = document.getElementById("yearResult");
+  const showMonth = document.getElementById("monthResult");
+  const showDay = document.getElementById("dayResult");
 
-    animateNumber(showYear, age.year);
-    animateNumber(showMonth, age.months);
-    animateNumber(showDay, age.days);
+  animateNumber(showYear, age.year);
+  animateNumber(showMonth, age.months);
+  animateNumber(showDay, age.days);
 }
 
 function animateNumber(element, target) {
-    let current = 0;
+  let current = 0;
+  if (target === 0) {
+    element.textContent = current < 10 ? `0${current}` : current;
+  } else {
     const interval = setInterval(() => {
-        current++;
-        element.textContent = current < 10 ? `0${current}` : current;
-        if (current === target) {
-            clearInterval(interval);
-        }
-    }, 100); // Vitesse de l'animation en millisecondes
+      current++;
+      element.textContent = current < 10 ? `0${current}` : current;
+      if (current === target) {
+        clearInterval(interval);
+      }
+    }, 100);
+  }
 }
-
-// When the form is submitted
-document.getElementById('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const showErrorYear = document.getElementById('errorYear')
-    const showErrorMonth = document.getElementById('errorMonth')
-    const showErrorDay = document.getElementById('errorDay')
-    const showErrorForm = document.getElementById('errorForm')
-
-    showErrorDay.classList.add('notDisplay')
-    showErrorMonth.classList.add('notDisplay')
-    showErrorYear.classList.add('notDisplay')
-    showErrorForm.classList.add('notDisplay')
-
-
-showErrorDay.innerHTML = ''
-showErrorMonth.innerHTML = ''
-showErrorYear.innerHTML = ''
-
-
-    const day = parseInt(document.getElementById('dob_day').value);
-    const month = parseInt(document.getElementById('dob_month').value);
-    const year = parseInt(document.getElementById('dob_year').value);
-
-    if (isNaN(day) || isNaN(month) || isNaN(year)) {
-        document.getElementById('dob_day').classList.remove('inputError')
-        document.getElementById('dob_month').classList.remove('inputError')
-        document.getElementById('dob_year').classList.remove('inputError')
-        if(isNaN(day))
-        {
-            showErrorDay.innerHTML = "This field is required";
-            showErrorDay.classList.remove('notDisplay')
-            document.getElementById('dob_day').classList.add('inputError')
-        }
-        
-        if(isNaN(month))
-        {
-            
-                showErrorMonth.innerHTML = "This field is required";
-                showErrorMonth.classList.remove('notDisplay')
-                document.getElementById('dob_month').classList.add('inputError')
-            
-        }
-
-        if (isNaN(year))
-        {
-            showErrorYear.innerHTML = "This field is required";
-            showErrorYear.classList.remove('notDisplay')
-            document.getElementById('dob_year').classList.add('inputError')
-        }
-        return;
-    }
-
-    else
-    {
-        document.getElementById('dob_day').classList.remove('inputError')
-        document.getElementById('dob_month').classList.remove('inputError')
-        document.getElementById('dob_year').classList.remove('inputError')
-    }
-
-if(day<1 || day>31)
-{
-    showErrorDay.innerHTML = "Must be between 1 and 31 days";
-            showErrorDay.classList.remove('notDisplay')
-            document.getElementById('dob_day').classList.add('inputError')
-}
-
-if(month<1  || month>12)
-{
-    showErrorMonth.innerHTML = "Must be between 1 and 12 months";
-    showErrorMonth.classList.remove('notDisplay')
-    document.getElementById('dob_month').classList.add('inputError')
-}
-
-const nowYear = new Date().getFullYear();
-
-console.log(nowYear)
-console.log(year)
-if(year > nowYear)
-{
-    showErrorYear.innerHTML = "Should not be in the futur";
-    showErrorYear.classList.remove('notDisplay')
-    document.getElementById('dob_year').classList.add('inputError')
-
-}
-
-    if (!validateDate(day, month, year)) {
-        document.getElementById('dob_day').classList.add('inputError')
-        document.getElementById('dob_month').classList.add('inputError')
-        document.getElementById('dob_year').classList.add('inputError')
-
-        showErrorForm.innerHTML='Must be a valid date'
-        showErrorForm.classList.remove('notDisplay')
-        return;
-    }
-
-    const age = calcultAge(month + '/' + day + '/' + year);
-    showAge(age);
-});
