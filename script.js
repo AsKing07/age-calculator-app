@@ -76,9 +76,9 @@ function showAge(age) {
     const showMonth = document.getElementById("monthResult")
     const showDay = document.getElementById("dayResult")
 
-    showYear.innerHTML=`${age.year}`
-    showMonth.innerHTML=`${age.months}`
-    showDay.innerHTML=`${age.days}`
+    showYear.textContent = age.year;
+    showMonth.textContent = age.months;
+    showDay.textContent = age.days;
 }
 
 // When the form is submitted
