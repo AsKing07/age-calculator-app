@@ -7,9 +7,9 @@ function calcultAge(dob) {
     const now = new Date();
 
 
-    console.log(dobObj)
 
-    let age = now.getFullYear() - parseInt(dobObj.getFullYear());
+
+    let age = now.getFullYear() - dobObj.getFullYear();
     let month = now.getMonth() - dobObj.getMonth();
     let days = now.getDate() - dobObj.getDate();
 
@@ -21,7 +21,6 @@ function calcultAge(dob) {
 
     if (days < 0) {
         const lastDayPrecedentMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
-        console.log(lastDayPrecedentMonth)
         days += lastDayPrecedentMonth;
         month--;
     }
