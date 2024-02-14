@@ -184,6 +184,6 @@ if(year > nowYear)
         return;
     }
 
-    const age = calcultAge(year + '-' + month + '-' + day);
+    const age = calcultAge(year + ', ' + month + ', ' + day);
     showAge(age);
 });
