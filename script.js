@@ -29,7 +29,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
       errorId: "errorYear",
       min: undefined,
       max: new Date().getFullYear(),
-      errorMessage: "Should not be in the future",
+      errorMessage: "Must be in the past",
     },
   ];
 
