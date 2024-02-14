@@ -9,9 +9,9 @@ function calcultAge(dob) {
 
     console.log(dobObj)
 
-    let age = now.getFullYear() - 2003;
-    let month = now.getMonth() - 5;
-    let days = now.getDate() - 5;
+    let age = now.getFullYear() - parseInt(dobObj.getFullYear());
+    let month = now.getMonth() - dobObj.getMonth();
+    let days = now.getDate() - dobObj.getDate();
 
     if (month < 0 || (month === 0 && days < 0)) {
         age--;
