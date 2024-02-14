@@ -117,6 +117,13 @@ input
     cursor: pointer;
 }
 
+.inputError
+{
+    border: solid 1px var(--LightRed);
+}
+
+.labelError
+
 input:focus
 {
     border: var(--OffBlack);
@@ -194,7 +201,7 @@ span
     
     width: 250px;
     
-    padding: 30px;
+    padding: 10px;
     margin-top: 30%;
 
 }

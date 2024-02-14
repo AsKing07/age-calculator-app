@@ -18,6 +18,7 @@
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
       .attribution {
+        margin-top: 10px;
         font-size: 11px;
         text-align: center;
       }
@@ -30,52 +31,57 @@
 
   <body>
     <div class="container">
-      <form>
+      <form id="form">
         <div class="inputList">
           <div class="formContent">
             <label for="dob_day">Day</label>
-            <input type="number" placeholder="DD" />
-            <p class="error errorDay notDisplay">Must be a valid day</p>
+            <input id="dob_day" type="number" placeholder="DD" />
+            <p class="error notDisplay" id="errorDay">Must be a valid day</p>
           </div>
           <div class="formContent">
             <label for="dob_month">Month</label>
             <input id="dob_month" type="number" placeholder="MM" />
-            <p class="error errorMonth notDisplay">Must be a valid month</p>
+            <p class="error  notDisplay" id="errorMonth">Must be a valid month</p>
           </div>
           <div class="formContent">
             <label for="dob_year">Year</label>
             <input id="dob_year" type="number" placeholder="YYYY" />
-            <p class="error errorYear notDisplay">Must be a valid year</p>
+            <p class="error  notDisplay" id="errorYear">Must be a valid year</p>
           </div>
         </div>
+        <div class="error notDisplay" id="errorForm"></div>
+        
 
         <div class="submitSection">
 
           <HR />
-          <button type="submit" onclick="calculateAge(event)"><img src="assets/images/icon-arrow.svg" alt="submitButton"></button>
+          <button type="submit"><img src="assets/images/icon-arrow.svg" alt="submitButton"></button>
         </div>
       </form>
 
       <div class="resultSection">
         <div class="yearResult">
-          <span>--</span> years
+          <span id="yearResult">--</span> years
         </div>
         <div class="monthResult">
-          <span>--</span> months
+          <span id="monthResult">--</span> months
         </div>
         <div class="dayResult">
-          <span>--</span> days
+          <span id="dayResult">--</span> days
         </div>
+      </div>
+
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Charbel SONON</a>.
       </div>
     </div>
 
     
 
-    <!-- <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div> -->
+    <script src="script.js"></script>
+
   </body>
 </html>
