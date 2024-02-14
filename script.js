@@ -20,6 +20,7 @@ function calcultAge(dob) {
         month--;
     }
 
+
     return {
         year: age,
         months: month,
@@ -76,9 +77,9 @@ function showAge(age) {
     const showMonth = document.getElementById("monthResult")
     const showDay = document.getElementById("dayResult")
 
-    showYear.innerHTML=`${parseInt(age.year)}`
-    showMonth.innerHTML=`${parseInt(age.months)}`
-    showDay.innerHTML=`${parseInt(age.days)}`
+    showYear.textContent = parseInt(age.year);
+    showMonth.textContent = parseInt(age.months);
+    showDay.textContent = parseInt(age.days);
 }
 
 // When the form is submitted
